@@ -29,21 +29,25 @@ def get_user_input() -> str:
 # Basic filtering
 def basic_filter(c: str) -> str:
     print("=> DEBUG: Applying Basic Filtering")
-    return c.replace('\'','').replace('.','').replace('"','')
+    return c.lower().replace('\'','').replace('.','').replace('"','')
 
 # Tokenization
 # get the filtered input and return list of strings(tokenize)
-def tokenize(comment: str) -> list[str]:
+def tokenize(c: str) -> list[str]:
     print("=> DEBUG: Tokenizationing The Input")
-    #TODO: Add the logic
-    return ['bar']
+    return c.split(' ')
 
 # Stop word filter and Negation handling
-# Hard part?
 def stop_word_filter(l: list[str]) -> list[str]:
     print("=> DEBUG: Stop-Word Filtering")
-    #TODO: Add the logic
-    return ['bar']
+    with open('stop_wordlist.csv') as stop_word_file:
+        lines = [line.rstrip() for line in stop_word_file]
+    for word in lines:
+        if word in l:
+            l.remove(word)
+    return l
+
+# Hard part?
 def negation_handle(l: list[str]) -> list[str]:
     print("=> DEBUG: Negation Handling")
     #TODO: Add the logic
