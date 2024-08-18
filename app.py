@@ -11,30 +11,25 @@ def main() -> None:
     comment: list[str] = stem(comment)
     # step5
     stem_class: bool = feature_extract(comment)
-    # if stem_class == True:
-    #     print("good comment")
-    # else:
-    #     print("Bad comment")
-    # I just use match function basically the same thing
-    match stem_class:
-        case True:
-            print("This is a good Comment!")
-        case False:
-            print("This is a bad Comment!")
+
+    if stem_class ==  True:
+        print("This is a good Comment!")
+    else:
+        print("This is a bad Comment!")
 
 # This function get userinput and return it
 def get_user_input() -> str:
     print("=> DEBUG: Getting User Input")
-    comment: str = input("Enter Your Comment: ")
-    return comment
+    # comment: str = input("Enter Your Comment: ")
+    # WARN: I just hard code this remove this input and ask it explecitly 
+    return "Same great ice cream flavor and friendly service as in the S 18th street location. This location is not as small but it's hard to talk to friends. Thankfully there is great outdoor seating to escape the noise."
 
 # Sentiment analazis logic 
 
 # Basic filtering
-def basic_filter(comment: str) -> str:
+def basic_filter(c: str) -> str:
     print("=> DEBUG: Applying Basic Filtering")
-    #TODO: Add the logic
-    return 'bar'
+    return c.replace('\'','').replace('.','').replace('"','')
 
 # Tokenization
 # get the filtered input and return list of strings(tokenize)
